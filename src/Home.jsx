@@ -6,7 +6,11 @@ function Home(){
     const [posts, setPosts] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:3000/posts')  //http://localhost:3000/posts
+
+        const controller = new AbortController() //clean-Up function
+        const signal = controller.signal  //clean-Up function
+
+        fetch('http://localhost:3000/posts' ,{signal})  //http://localhost:3000/posts  //clean-Up function
 
         .then(response =>{
             return response.json()
@@ -15,10 +19,17 @@ function Home(){
             console.log(data)
             setPosts(data)
         })
-        .catch(err => {
+        .catch(err => {  //error handling
             console.log(err)
         })
-    },[])
+
+        //clean-Up function
+        return () => {
+            console.log("Unmounted, Cleaning up")
+            controller.abort()
+        }
+
+    },[])  //[] -> dependencies list
 
     return(
             <div className="container">

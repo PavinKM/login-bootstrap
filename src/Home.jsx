@@ -34,6 +34,8 @@ function Home(){
     return(
             <div className="container">
                 <Link to="/login">Login</Link>
+                <br/>
+                <Link to="/Counter">Counter</Link>
             <div className="row justify-content-center m-3">
                 {posts && posts.map(post => {
                     return (

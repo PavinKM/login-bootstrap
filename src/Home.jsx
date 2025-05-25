@@ -1,9 +1,15 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect, createContext } from "react";
 import { Link } from "react-router-dom"
+import Login from "./login.jsx" 
+
+//should be outside the function
+//export const dataContext = createContext()  //to send values between components 
+    //home la eruka value, counter ku passing
 
 function Home(){
 
     const [posts, setPosts] = useState(null);
+    // const data = "pavin"
 
     useEffect(() => {
 
@@ -35,6 +41,11 @@ function Home(){
             <div className="container">
                 <Link to="/login">Login</Link>
                 <br/>
+
+        {/* <dataContext.Provider value={data}>
+            <Login/>
+        </dataContext.Provider>   to send values between components */}
+
                 <Link to="/Counter">Counter</Link>
             <div className="row justify-content-center m-3">
                 {posts && posts.map(post => {

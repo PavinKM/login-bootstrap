@@ -1,9 +1,12 @@
 //updater function
-import { useEffect, useState } from "react";
+import { useEffect, useState ,useContext} from "react";
+//import { dataContext } from "./Home";
 
 function Counter(){
 
     const [count, setCount] = useState(0)
+
+    //const data = useContext(dataContext)
 
     function increment(){
         //update function
@@ -19,6 +22,7 @@ function Counter(){
         <>
             <h2 className="m-5">{count}</h2>
             <button className="m-5" onClick={increment}>Up</button>
+            {/* <h2>{data}</h2> */}
         </>
     );
 

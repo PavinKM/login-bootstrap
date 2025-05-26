@@ -1,5 +1,5 @@
 import { useState,useEffect, createContext } from "react";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Login from "./login.jsx" 
 
 //should be outside the function
@@ -7,6 +7,8 @@ import Login from "./login.jsx"
     //home la eruka value, counter ku passing
 
 function Home(){
+
+    const navigate = useNavigate();
 
     const [posts, setPosts] = useState(null);
     // const data = "pavin"
@@ -50,7 +52,7 @@ function Home(){
             <div className="row justify-content-center m-3">
                 {posts && posts.map(post => {
                     return (
-                        <div key={post.id} className="card m-3" style={{width: '18rem'}}>
+                        <div key={post.id} className="card m-3" style={{width: '18rem'}} onClick={()=>{navigate('/post/'+post.id)}}> 
                             <div className="card-body">
                                 <h5 className="card-title">{post.title}</h5>
                                 <p className="card-text">{post.content}</p>
